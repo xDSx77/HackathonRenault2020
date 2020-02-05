@@ -3,3 +3,12 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.header-right-block {
+    display: flex;
+    align-items: baseline;
+}
+
+.item + .item {
+    margin-left: 12px;
+}
