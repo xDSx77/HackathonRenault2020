@@ -1,6 +1,7 @@
 from mqtt_base import *
 
 
+# Set the traffic conditions (= slowing factors) for some road segments
 def traffic_conditions(roads: list, slowing_factors: list):
     # roads must be an array with the different road segments id
     # slowing_factors must be an array with the different slowing factors (1 to 10) corresponding to the roads
@@ -21,6 +22,6 @@ def traffic_conditions(roads: list, slowing_factors: list):
             traffic_payload += "{\"road\": \"" + str(roads[i]) + "\", " + "\"slowing_factor\": " + str(slowing_factors[i]) + "}"
     traffic_payload += "]"
     print(traffic_payload)
-    # client.subscribe(ENV + "/prod/user/situation", qos=0)
+    # client.subscribe(ENV + "/prod/environment/change/traffic_conditions", qos=0)
     client.publish(ENV + "/prod/city/morph/traffic_conditions", traffic_payload, qos=0, retain=False)
     # client.disconnect()
