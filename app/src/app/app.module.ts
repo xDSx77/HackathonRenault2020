@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatToolbarModule,
@@ -17,6 +18,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { DialogSettingsComponent } from './settings/dialog-settings/dialog-settings.component';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { CurrentAirComponent } from './current-air/current-air.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CurrentAirComponent } from './current-air/current-air.component';
     SettingsComponent,
     DialogSettingsComponent,
     CurrentWeatherComponent,
-    CurrentAirComponent
+    CurrentAirComponent,
+    MapComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { CurrentAirComponent } from './current-air/current-air.component';
     MatCheckboxModule,
     MatRadioModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
