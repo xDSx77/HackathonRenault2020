@@ -1,0 +1,21 @@
+.dialog-settings {
+    display: flex;
+    flex-direction: column;
+}
+
+.priorite {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    .mat-radio-button {
+        margin-top: 5px;
+    }
+    .mat-checkbox {
+        align-content: center;
+  align-items: center;
+        margin-top: 5px;
+    }
+}
+.setting-content {
+    font: 1.2em "Fira Sans", sans-serif;
+}
