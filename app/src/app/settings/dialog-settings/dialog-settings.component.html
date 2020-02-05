@@ -1,0 +1,20 @@
+    <h3 mat-dialog-title>Paramètres</h3>
+<mat-dialog-content class="dialog-settings">
+        <div class="priorite">
+            <span class="setting-content">Quel transport privilegier ?</span>
+            <mat-checkbox checked="true">Marche</mat-checkbox>
+            <mat-checkbox checked="true">Metro</mat-checkbox>
+            <mat-checkbox checked="true">Autotaxi</mat-checkbox>
+            <mat-checkbox checked="true">Velo</mat-checkbox>
+        </div>
+        <div class="priorite">
+            <span class="setting-content">Quelle est votre priorité ?</span>
+            <mat-radio-group aria-label="Quelle est votre priorité ?">
+                <mat-radio-button checked="true" value="1">Le plus rapide</mat-radio-button>
+                <mat-radio-button value="2">Le moins de marche</mat-radio-button>
+                <mat-radio-button value="3">Le plus écologique</mat-radio-button>
+                <mat-radio-button value="4">Le moins de pluie</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <button mat-button (click)="onNoClick()">Confirmer</button>
+</mat-dialog-content>
