@@ -6,7 +6,12 @@
 
 .header-right-block {
     display: flex;
-    align-items: baseline;
+    align-items: stretch;
+}
+
+.item {
+    display: flex;
+    align-items: center;
 }
 
 .item + .item {
