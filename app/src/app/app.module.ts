@@ -9,6 +9,7 @@ import {
   MatIconModule,
   MatDialogModule
 } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { DialogSettingsComponent } from './settings/dialog-settings/dialog-setti
     MatCheckboxModule,
     MatRadioModule,
     BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
