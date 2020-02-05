@@ -31,3 +31,8 @@ client.username_pw_set(USER, PASSWORD)
 
 # Initialize the connection
 client.connect(BROKER_DOMAIN, port=1883, keepalive=60)
+
+
+# Subscribe to the mission channel
+def subscribe_mission():
+    client.subscribe(ENV + "/prod/user/mission", qos=0)
