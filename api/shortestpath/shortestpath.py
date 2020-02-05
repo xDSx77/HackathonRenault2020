@@ -9,9 +9,19 @@ def get_available_cars(ecosystem: Ecosystem):
     cars = ecosystem.get_all_vehicles_info()
     for car in cars:
         if car["available"]:
-            vehicles.append({"id": car["attitude"]["id"], "x": car["attitude"]["position"]["x"], "y": car["attitude"]["position"]["y"]})
+            vehicles.append({"id": car["id"], "x": car["attitude"]["position"]["x"], "y": car["attitude"]["position"]["y"]})
     return vehicles
 
+def set_best_car(car_paths: dict):
+    """
+    Transform car paths dict to only keep the best car
+    """
+    best_car = []
+    min = 0.0
+    for car in car_paths["cars"]:
+        if len(best_car) == 0 or car['path_length'] < min:
+            best_car = [car]
+    car_paths["cars"] = best_car
 
 def get_subway_path(eco, src: dict, dst: dict) -> list:
 
@@ -65,13 +75,13 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
     shorter_paths = {}
     for key, function in dict_filters.items():
 
-        print('KEY:', key)
-
         if len(filters) == 0 or key in filters:
             if key == "car":
                 available_cars = get_available_cars(ecosystem)
                 if len(available_cars) != 0:
-                    shorter_paths[key] = function(src, dst, available_cars)
+                    car_paths = function(src, dst, available_cars)
+                    #set_best_car(car_paths)
+                    shorter_paths[key] = car_paths
             elif key == "metro":
                 shorter_paths[key] = function(ecosystem, src, dst)
             else:
