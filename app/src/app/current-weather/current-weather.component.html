@@ -1,0 +1,3 @@
+<ng-container *ngIf="(currentWeather$ | async) as weather">
+  <mat-icon aria-hidden="false" aria-label="Weather" [svgIcon]="'weather-'+weather"></mat-icon>
+</ng-container>

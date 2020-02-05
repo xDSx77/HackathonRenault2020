@@ -15,13 +15,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DialogSettingsComponent } from './settings/dialog-settings/dialog-settings.component';
+import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { CurrentAirComponent } from './current-air/current-air.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SettingsComponent,
     DialogSettingsComponent,
-    
+    CurrentWeatherComponent,
+    CurrentAirComponent
   ],
   imports: [
     BrowserModule,
