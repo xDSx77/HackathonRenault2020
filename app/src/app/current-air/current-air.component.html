@@ -1,0 +1,3 @@
+<ng-container *ngIf="(currentAir$ | async) as air">
+  <mat-icon aria-hidden="false" aria-label="Air quality" [svgIcon]="'air-'+air"></mat-icon>
+</ng-container>
