@@ -80,8 +80,12 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
                 available_cars = get_available_cars(ecosystem)
                 if len(available_cars) != 0:
                     car_paths = function(src, dst, available_cars)
-                    #set_best_car(car_paths)
-                    shorter_paths[key] = car_paths
+
+                    set_best_car(car_paths)
+
+                    total_cost = float(car_paths['cars'][0]['path_length'])
+
+                    shorter_paths[key] = Path(src, dst, [car_paths], total_cost)
             elif key == "metro":
                 shorter_paths[key] = function(ecosystem, src, dst)
             else:
