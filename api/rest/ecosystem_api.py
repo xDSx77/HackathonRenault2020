@@ -36,7 +36,7 @@ class Ecosystem:
         self.closed_roads_walk = "/api/graph/road_graph/roads_status/walk"
         self.closed_roads_metro = "/api/graph/road_graph/line_state"
         # VEHICLES
-        self.vehicles_info = "​/api/vehicle/api/v1/vehicles"
+        self.vehicles_info = "/api/vehicle/api/v1/vehicles"
 
         # DEV ROUTES
         self.reset_walk_roads = "/api/graph/road_graph/reset_graph/walk"
