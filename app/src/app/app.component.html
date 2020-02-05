@@ -7,5 +7,7 @@
       <app-settings class="item"></app-settings>
     </div>
   </mat-toolbar>
-  <app-map></app-map>
+  <app-map *ngIf="isMap"></app-map>
+  <app-ways *ngIf="!isMap"></app-ways>
+  <button mat-stroked-button (click)="changeView()">{{buttonText}}</button>
 </div>
