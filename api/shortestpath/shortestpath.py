@@ -18,31 +18,31 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
     # Get path between src to dst
     subway_path = eco.get_shortest_path_metro(src, dst)
     if subway_path == {}:
+        print('src:', src, ' dest:', dst)
+        print('here:', subway_path)
         return []
 
     list_sub_path = []
     last_path = None
 
     # If first station not in src -> add a path of walk to first station
-    first_station = subway_path['paths'][1]
-    if src['x'] != second_path[0] or src['y'] == second_path[1]:
+    first_station = subway_path['cars'][0]['paths'][1]
+    if src['x'] != first_station[0] or src['y'] == first_station[1]:
 
-        walk_path = eco.get_shortest_paths_walk(src, second_path)
+        walk_path = eco.get_shortest_paths_walk(src, {'x': first_station[0], 'y': first_station[1]})
         if walk_path == {}:
             return []
 
-        list_sub_path.append(walk)
+        list_sub_path.append(walk_path)
 
     # If last station not in dst -> add a path of walk to dst
-    last_station = subway_path['paths'][-1]
+    last_station = subway_path['cars'][0]['paths'][-1]
     if dst['x'] != last_station[0] or dst['y'] != last_station[1]:
-        last_path = exo.get_shortest_paths({'x': last_station[0], 'y': last_station[1]}, dst)
-
+        last_path = eco.get_shortest_paths({'x': last_station[0], 'y': last_station[1]}, dst)
 
     subway_path['paths'] = subway_path['paths'][1:]
     subway_path['cost'] = subway_path['cost'][1:]
     list_sub_path.append(subway_path)
-
 
     if last_path:
         list_sub_path.append(last_path)
@@ -50,7 +50,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
 
     total_cost = 0
     for elt in list_sub_path:
-        total_cost += float(elt['path_lenght'])
+        total_cost += float(elt['cars'][0]['path_lenght'])
 
     return Path(src, dst, list_sub_path, total_cost)
 

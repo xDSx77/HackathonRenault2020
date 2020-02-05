@@ -4,7 +4,7 @@ class Path:
     """
 
     src = None
-    dst  = None
+    dst = None
     list_sub_path = None
     total_cost = None
 
