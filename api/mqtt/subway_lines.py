@@ -6,10 +6,12 @@ def subway_lines(lines: list, states: list):
     # states must be an array with the states "open" or "close" corresponding to the line that must be changed
     # lines and states must have the same size
     if len(lines) != len(states):
-        exit("The 2 arrays does not have the same size: " + str(len(lines)) + " != " + str(len(states)))
+        print("The 2 arrays does not have the same size: " + str(len(lines)) + " != " + str(len(states)))
+        return
     for i in range(len(states)):
         if states[i] != "open" and states[i] != "close":
-            exit("Incorrect value in states at index " + str(i) + ": " + str(states[i]))
+            print("Incorrect value in states at index " + str(i) + ": " + str(states[i]))
+            return
 
     line_payload = "["
     for i in range(len(lines)):
