@@ -77,7 +77,7 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
             else:
 
                 tmp_dic_path = function(src, dst)
-                total_cost = float(tmp_dic_path['cars']['path_lenght'])
+                total_cost = float(tmp_dic_path['cars'][0]['path_length'])
                 tmp_path = Path(src, dst, [tmp_dic_path], total_cost)
 
                 shorter_paths[key] = tmp_path
