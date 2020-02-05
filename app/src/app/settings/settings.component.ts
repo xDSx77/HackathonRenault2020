@@ -13,10 +13,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SettingsComponent implements OnInit {
 
   
-
-  
-
-
   constructor(private dialog: MatDialog) {}
   
   openDialog(): void {
@@ -26,7 +22,7 @@ export class SettingsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      //SEND RESULT TO API
     });
   }
 

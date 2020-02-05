@@ -25,13 +25,41 @@ preference: Preference = Preference.Fastest;
 
   constructor(public dialogRef: MatDialogRef<DialogSettingsComponent>, private formBuilder: FormBuilder) {
     this.settingForm = this.formBuilder.group({
-      transportPref: '',
-      preference: ''
+      metro: true,
+      velo: true,
+      marche: true,
+      autotaxi: true,
+      preference: "fastest"
     });
+
+    this.settingForm.get("metro").valueChanges.subscribe(
+      data => {
+        this.transportPref.metro = data;
+      });
+    this.settingForm.get("marche").valueChanges.subscribe(
+      data => {
+        this.transportPref.marche = data;
+      });
+    this.settingForm.get("autotaxi").valueChanges.subscribe(
+      data => {
+        this.transportPref.autotaxi = data;
+      });
+    this.settingForm.get("velo").valueChanges.subscribe(
+      data => {
+        this.transportPref.velo = data;
+      });
+    this.settingForm.get("preference").valueChanges.subscribe(
+      data => {
+        this.preference = data;
+      });
    }
 
   onNoClick(): void {
-    this.dialogRef.close();
+
+    this.dialogRef.close({
+      transportPref: this.transportPref,
+      preference: this.preference
+    });
   }
 
   ngOnInit() {
