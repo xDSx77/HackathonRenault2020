@@ -1,6 +1,7 @@
 from mqtt_base import *
 
 
+# Set the state (open or close) for some subway lines
 def subway_lines(lines: list, states: list):
     # lines must be an array with the different subway segments id
     # states must be an array with the states "open" or "close" corresponding to the line that must be changed
@@ -21,6 +22,6 @@ def subway_lines(lines: list, states: list):
             line_payload += "{\"line\": \"" + str(lines[i]) + "\", " + "\"state\": \"" + str(states[i]) + "\"}"
     line_payload += "]"
     print(line_payload)
-    # client.subscribe(ENV + "/prod/user/situation", qos=0)
+    # client.subscribe(ENV + "/prod/environment/change/lines_state", qos=0)
     client.publish(ENV + "/prod/city/morph/lines_state", line_payload, qos=0, retain=False)
     # client.disconnect()

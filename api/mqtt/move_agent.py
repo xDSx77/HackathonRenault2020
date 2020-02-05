@@ -1,6 +1,7 @@
 from mqtt_base import *
 
 
+# Move the agent with the according vehicle type to a coordinate of the MeaooCity
 def move_agent(vehicle_type: str, target: tuple):
     # vehicle_type must be "walk", "subway", "bike" or "car"
     # target must be a tuple like (4, 5.7) corresponding to the target coordinates
@@ -17,6 +18,6 @@ def move_agent(vehicle_type: str, target: tuple):
                     "\"target\": {\"x\": " + str(target[0]) + ", \"y\": " + str(target[1]) + "}" \
                     "}"
     print(move_payload)
-    # client.subscribe(ENV + "/prod/user/situation", qos=0)
+    # client.subscribe(ENV + "/prod/user/status", qos=0)
     client.publish(ENV + "/prod/user/path", move_payload, qos=0, retain=False)
     # client.disconnect()

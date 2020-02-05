@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 import {
   MatToolbarModule,
@@ -19,6 +21,9 @@ import { DialogSettingsComponent } from './settings/dialog-settings/dialog-setti
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { CurrentAirComponent } from './current-air/current-air.component';
 import { MapComponent } from './map/map.component';
+import { WaysComponent } from './ways/ways.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +33,7 @@ import { MapComponent } from './map/map.component';
     CurrentWeatherComponent,
     CurrentAirComponent,
     MapComponent,
+    WaysComponent,
     
   ],
   imports: [
@@ -38,6 +44,8 @@ import { MapComponent } from './map/map.component';
     MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatFormFieldModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

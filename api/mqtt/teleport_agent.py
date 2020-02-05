@@ -1,6 +1,7 @@
 from mqtt_base import *
 
 
+# Teleport the agent with the according vehicle type to a certain coordinate of the MeaooCity
 def teleport_agent(vehicle_type: str, arrival_point: tuple):
     # vehicle_type must be "walk", "subway", "bike" or "car"
     # arrival_point must be a tuple like (10, 2.5)
@@ -20,6 +21,6 @@ def teleport_agent(vehicle_type: str, arrival_point: tuple):
                        "\"costs\": [0.0, 0.0]" \
                        "}"
     print(teleport_payload)
-    # client.subscribe(ENV + "/prod/user/situation", qos=0)
+    # client.subscribe(ENV + "/prod/user/status", qos=0)
     client.publish(ENV + "/prod/user/path-to-target", teleport_payload, qos=0, retain=False)
     # client.disconnect()

@@ -1,7 +1,13 @@
 <div>
   <mat-toolbar color="primary" class="header">
     <span>GoldenEye</span>
-    <app-settings></app-settings>
+    <div class="header-right-block">
+      <app-current-weather class="item"></app-current-weather>
+      <app-current-air class="item"></app-current-air>
+      <app-settings class="item"></app-settings>
+    </div>
   </mat-toolbar>
-  <app-map></app-map>
+  <app-map *ngIf="isMap"></app-map>
+  <app-ways *ngIf="!isMap"></app-ways>
+  <button mat-stroked-button (click)="changeView()">{{buttonText}}</button>
 </div>
