@@ -1,0 +1,19 @@
+from mqtt_base import *
+
+
+def teleport_agent(vehicle_type, arrival_point):
+    # vehicle_type must be "walk", "subway", "bike" or "car"
+    # arrival_point must be a tuple like (10, 2.5)
+
+    teleport_payload = "{" + \
+                       "\"vehicle_type\": \"" + str(vehicle_type) + "\"," \
+                       "\"path\": [" \
+                       "    [" + str(arrival_point[0]) + ", " + str(arrival_point[1]) + "]," \
+                       "    [" + str(arrival_point[0] + 0.1) + ", " + str(arrival_point[1]) + "]" \
+                       "]," \
+                       "\"costs\": [0.0, 0.0]" \
+                       "}"
+    print(teleport_payload)
+    # client.subscribe(ENV + "/prod/user/situation", qos=0)
+    client.publish(ENV + "/prod/user/path-to-target", teleport_payload, qos=0, retain=False)
+    client.disconnect()
