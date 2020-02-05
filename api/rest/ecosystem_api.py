@@ -143,7 +143,8 @@ class Ecosystem:
             "arrival": dst
         }
 
-        response = requests.get(url=route, data=payload)
+        response = requests.post(url=route, json=payload)
+        print(response.url)
         if response.status_code != 200:
             logging.debug("ECOSYSTEM: REQUEST FAILED")
             return {}
@@ -158,7 +159,7 @@ class Ecosystem:
             "arrival": dst
         }
 
-        response = requests.get(url=route, data=payload)
+        response = requests.post(url=route, json=payload)
         if response.status_code != 200:
             logging.debug("ECOSYSTEM: REQUEST FAILED")
             return {}
@@ -174,7 +175,7 @@ class Ecosystem:
             "vehicles": vehicles
         }
 
-        response = requests.get(url=route, data=payload)
+        response = requests.post(url=route, json=payload)
         if response.status_code != 200:
             logging.debug("ECOSYSTEM: REQUEST FAILED")
             return {}
@@ -189,7 +190,7 @@ class Ecosystem:
             "arrival": dst
         }
 
-        response = requests.get(url=route, data=payload)
+        response = requests.post(url=route, json=payload)
         if response.status_code != 200:
             logging.debug("ECOSYSTEM: REQUEST FAILED")
             return {}

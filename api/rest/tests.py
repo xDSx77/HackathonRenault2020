@@ -11,7 +11,6 @@ class MyTestCase(unittest.TestCase):
         print(e.get_traffic())
         print(e.get_weather())
         print(e.get_metro_stations())
-        # print(e.get_all_vehicles_info())
         print(e.get_closed_roads_walk())
         print(e.get_closed_roads_metro())
 
@@ -42,7 +41,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_shortest_path(self):
         e = Ecosystem("http://team09.xp65.renault-digital.com", "None")
-        print(e.get_shortest_path_walk({"x": 16.4, "y": 3.8}, {"x": 18.2, "y": 3.8}))
+        print(e.get_shortest_path_walk({"x": 15.8, "y": 5.6}, {"x": 18.2, "y": 3.8}))
 
 
 if __name__ == '__main__':
