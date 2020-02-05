@@ -1,12 +1,12 @@
 import paho.mqtt.client as mqtt
 import logging
+import json
 
 logging.basicConfig(level=logging.DEBUG)
+with open("../config.dev.json") as json_f:
+    json_data = json.load(json_f)
 
-BROKER_DOMAIN = "mr1dns3dpz5mjj.messaging.solace.cloud"
-ENV = "team09"
-USER = ENV
-PASSWORD = "hf9twck3zc"
+ENV = json_data['environment']
 
 
 # The callback for when the client receives a CONNACK response from the server.
@@ -19,20 +19,21 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
 
+# The callback for when a client subscribe to a MQTT channel
+def on_subscribe(client, userdata, mid, granted_qos):
+    print(userdata)
+
+
 # Create the client
 client = mqtt.Client()
 
 # Set the callback functions
 client.on_connect = on_connect
 client.on_message = on_message
+client.on_subscribe = on_subscribe
 
 # Set the credentials for the connection
-client.username_pw_set(USER, PASSWORD)
+client.username_pw_set(json_data['broker_username'], json_data['broker_password'])
 
 # Initialize the connection
-client.connect(BROKER_DOMAIN, port=1883, keepalive=60)
-
-
-# Subscribe to the mission channel
-def subscribe_mission():
-    client.subscribe(ENV + "/prod/user/mission", qos=0)
+client.connect(json_data['broker_domain'], port=json_data['broker_port'], keepalive=60)
