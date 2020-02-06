@@ -16,7 +16,7 @@ export class MissionDialogComponent {
   ) { }
 
   onClick(): void {
-    this.dialogRef.close();
     this.router.navigate(['ways']);
+    this.dialogRef.close();
   }
 }
