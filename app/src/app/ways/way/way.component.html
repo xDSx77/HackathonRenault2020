@@ -1,0 +1,18 @@
+<div>
+    <div *ngFor="let trans of currentWay.transports; let i = index" class="wrapper-way">
+        <span *ngIf="trans == 'velo'">
+            <mat-icon>directions_bike</mat-icon>
+        </span>
+        <span *ngIf="trans == 'marche'">
+            <mat-icon>directions_walk</mat-icon>
+        </span>
+        <span *ngIf="trans == 'metro'">
+            <mat-icon>directions_subway</mat-icon>
+        </span>
+        <span *ngIf="trans == 'autotaxi'">
+            <mat-icon>local_taxi</mat-icon>
+        </span>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+        <span>{{currentWay.transportTime[i]}}</span>
+    </div>
+</div>

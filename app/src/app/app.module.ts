@@ -28,6 +28,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MissionDialogComponent } from './mission-dialog/mission-dialog.component';
 import { HomeComponent } from './home/home.component';
 import { HomeBannerComponent } from './home-banner/home-banner.component';
+import { WayComponent } from './ways/way/way.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { HomeBannerComponent } from './home-banner/home-banner.component';
     MissionDialogComponent,
     HomeComponent,
     HomeBannerComponent,
+    WayComponent,
   ],
   imports: [
     BrowserModule,

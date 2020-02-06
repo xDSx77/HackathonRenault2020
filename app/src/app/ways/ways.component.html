@@ -1,34 +1,26 @@
 <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let way of ways">
         <mat-expansion-panel-header>
         <mat-panel-title>
-            Chemins
+            {{way.time}}
         </mat-panel-title>
         <mat-panel-description>
-        Metro / Marche / Velo / Autotaxi
+            <div *ngFor="let trans of way.transports">
+                <span *ngIf="trans == 'velo'">
+                    <mat-icon>directions_bike</mat-icon>
+                </span>
+                <span *ngIf="trans == 'marche'">
+                    <mat-icon>directions_walk</mat-icon>
+                </span>
+                <span *ngIf="trans == 'metro'">
+                    <mat-icon>directions_subway</mat-icon>
+                </span>
+                <span *ngIf="trans == 'autotaxi'">
+                    <mat-icon>local_taxi</mat-icon>
+                </span>
+            </div>
         </mat-panel-description>
         </mat-expansion-panel-header>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-        <mat-panel-title>
-            Chemins
-        </mat-panel-title>
-        <mat-panel-description>
-        Metro / Marche / Velo / Autotaxi
-        </mat-panel-description>
-        </mat-expansion-panel-header>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-        <mat-panel-title>
-            Chemins
-        </mat-panel-title>
-        <mat-panel-description>
-        Metro / Marche / Velo / Autotaxi
-        </mat-panel-description>
-        </mat-expansion-panel-header>
+        <app-way [currentWay]=way></app-way>
     </mat-expansion-panel>
 </mat-accordion>
