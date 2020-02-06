@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'http://team09.xp65.renault-digital.com/api/'
+  baseApiUrl: 'http://team09.xp65.renault-digital.com/api/',
+  customApiUrl: '',
 };
 
 /*
