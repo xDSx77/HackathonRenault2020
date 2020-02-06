@@ -2,8 +2,8 @@ import sys
 sys.path.insert(1, '../rest/')
 sys.path.insert(1, '../shortestpath')
 
-from ecosystem_api import Ecosystem
-from path import Path
+from rest.ecosystem_api import Ecosystem
+from shortestpath.path import Path
 
 def get_available_cars(ecosystem: Ecosystem):
     vehicles = []
