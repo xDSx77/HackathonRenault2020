@@ -26,6 +26,8 @@ import { MapComponent } from './map/map.component';
 import { WaysComponent } from './ways/ways.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MissionDialogComponent } from './mission-dialog/mission-dialog.component';
+import { HomeComponent } from './home/home.component';
+import { HomeBannerComponent } from './home-banner/home-banner.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { MissionDialogComponent } from './mission-dialog/mission-dialog.componen
     MapComponent,
     WaysComponent,
     MissionDialogComponent,
+    HomeComponent,
+    HomeBannerComponent,
   ],
   imports: [
     BrowserModule,
