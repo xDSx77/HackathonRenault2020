@@ -41,7 +41,7 @@ export class MissionService {
           y: 2.1
         }
       ]
-    }), 1000);
+    }), 3000);
 
     this.fetchCurrentMission();
     setInterval(() => this.fetchCurrentMission(), missionRefreshInterval);
