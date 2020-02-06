@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Weather } from './weather.enum';
 import { Air } from './air.enum';
+import { startWith } from 'rxjs/operators';
+
 
 const baseApiContextUrl: string = environment.baseApiUrl + 'context/api/context';
 const baseApiContextWeatherUrl: string = baseApiContextUrl + '/weather/current';
@@ -80,10 +82,18 @@ export class ContextService {
   }
 
   public getCurrentWeather$(): Observable<Weather> {
-    return this.currentWeatherSubject$.asObservable();
+    let ret = this.currentWeatherSubject$.asObservable();
+    if (this.lastKnownWeather) {
+      ret = ret.pipe(startWith(this.lastKnownWeather));
+    }
+    return ret;
   }
 
   public getCurrentAir$(): Observable<Air> {
-    return this.currentAirSubject$.asObservable();
+    let ret = this.currentAirSubject$.asObservable();
+    if (this.lastKnownAir) {
+      ret = ret.pipe(startWith(this.lastKnownAir));
+    }
+    return ret;
   }
 }
