@@ -37,10 +37,10 @@
 </mat-toolbar>
 <body>
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let way of ways">
+    <mat-expansion-panel *ngFor="let way of ways; let i = index">
         <mat-expansion-panel-header>
         <mat-panel-title>
-            {{way.time}}
+            cost(way)
         </mat-panel-title>
         <mat-panel-description>
             <div *ngFor="let trans of way.transports">
@@ -57,6 +57,9 @@
                     <mat-icon>local_taxi</mat-icon>
                 </span>
             </div>
+            <button mat-icon-button (click)="move()">
+                <mat-icon>check</mat-icon>
+            </button>
         </mat-panel-description>
         </mat-expansion-panel-header>
         <app-way [currentWay]=way></app-way>

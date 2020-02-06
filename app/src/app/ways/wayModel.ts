@@ -1,5 +1,6 @@
 export class Way {
-    time: string
-    transports: string[]
-    transportTime: string[]
+    src
+    dst
+    list_sub_path
+    total_cost
   }
