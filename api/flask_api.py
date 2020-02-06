@@ -48,7 +48,7 @@ def get_agent_info():
     return ecosystem.get_agent_info()
 
 
-@app.root_path("/api/get_weather")
+@app.route("/api/get_weather")
 def get_weather() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -56,7 +56,7 @@ def get_weather() -> dict:
     return ecosystem.get_weather()
 
 
-@app.root_path("/api/get_pollution")
+@app.route("/api/get_pollution")
 def get_pollution() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -64,7 +64,7 @@ def get_pollution() -> dict:
     return ecosystem.get_pollution()
 
 
-@app.root_path("/api/get_graph_car")
+@app.route("/api/get_graph_car")
 def get_graph_car() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -72,7 +72,7 @@ def get_graph_car() -> dict:
     return ecosystem.get_graph_car()
 
 
-@app.root_path("/api/get_graph_bike")
+@app.route("/api/get_graph_bike")
 def get_graph_bike() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -80,7 +80,7 @@ def get_graph_bike() -> dict:
     return ecosystem.get_graph_bike()
 
 
-@app.root_path("/api/get_graph_walk")
+@app.route("/api/get_graph_walk")
 def get_graph_walk() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -88,7 +88,7 @@ def get_graph_walk() -> dict:
     return ecosystem.get_graph_walk()
 
 
-@app.root_path("/api/get_graph_metro")
+@app.route("/api/get_graph_metro")
 def get_graph_metro() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -96,7 +96,7 @@ def get_graph_metro() -> dict:
     return ecosystem.get_graph_metro()
 
 
-@app.root_path("/api/get_neighbours")
+@app.route("/api/get_neighbours")
 def get_neighbours() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -104,7 +104,7 @@ def get_neighbours() -> dict:
     return ecosystem.get_neighbours()
 
 
-@app.root_path("/api/get_neighbours_metro")
+@app.route("/api/get_neighbours_metro")
 def get_neighbours_metro() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -112,7 +112,7 @@ def get_neighbours_metro() -> dict:
     return ecosystem.get_neighbours_metro()
 
 
-@app.root_path("/api/get_neighbours_walk")
+@app.route("/api/get_neighbours_walk")
 def get_neighbours_walk() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -120,7 +120,7 @@ def get_neighbours_walk() -> dict:
     return ecosystem.get_neighbours_walk()
 
 
-@app.root_path("/api/get_metro_stations")
+@app.route("/api/get_metro_stations")
 def get_metro_stations() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -128,7 +128,7 @@ def get_metro_stations() -> dict:
     return ecosystem.get_metro_stations()
 
 
-@app.root_path("/api/get_traffic")
+@app.route("/api/get_traffic")
 def get_traffic() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -136,7 +136,7 @@ def get_traffic() -> dict:
     return ecosystem.get_traffic()
 
 
-@app.root_path("/api/get_closed_roads_walk")
+@app.route("/api/get_closed_roads_walk")
 def get_closed_roads_walk() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -144,7 +144,7 @@ def get_closed_roads_walk() -> dict:
     return ecosystem.get_closed_roads_walk()
 
 
-@app.root_path("/api/get_closed_roads_bike")
+@app.route("/api/get_closed_roads_bike")
 def get_closed_roads_bike() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -152,7 +152,7 @@ def get_closed_roads_bike() -> dict:
     return ecosystem.get_closed_roads_bike()
 
 
-@app.root_path("/api/get_closed_roads_car")
+@app.route("/api/get_closed_roads_car")
 def get_closed_roads_car() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -160,7 +160,7 @@ def get_closed_roads_car() -> dict:
     return ecosystem.get_closed_roads_car()
 
 
-@app.root_path("/api/get_closed_roads_metro")
+@app.route("/api/get_closed_roads_metro")
 def get_closed_roads_metro() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
@@ -168,11 +168,20 @@ def get_closed_roads_metro() -> dict:
     return ecosystem.get_closed_roads_metro()
 
 
-@app.root_path("/api/get_all_vehicles_info")
+@app.route("/api/get_all_vehicles_info")
 def get_all_vehicles_info() -> dict:
     with open("config.dev.json") as json_f:
         json_data = json.load(json_f)
     ecosystem = Ecosystem(json_data["url"])
     return ecosystem.get_all_vehicles_info()
 
+
+@app.route("/api/get_vehicle_info", methods=['GET', 'POST'])
+def get_vehicle_info() -> dict:
+    # the frontend must post a form with at least an id on this page
+    id = request.form["id"]
+    with open("config.dev.json") as json_f:
+        json_data = json.load(json_f)
+    ecosystem = Ecosystem(json_data["url"])
+    return ecosystem.get_vehicle_info(id)
 
