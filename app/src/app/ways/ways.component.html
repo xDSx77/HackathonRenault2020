@@ -1,6 +1,41 @@
 <app-home-banner></app-home-banner>
 <app-map></app-map>
+<mat-toolbar color="primary" class="dir">
+    <span *ngIf="cos<0.52 && cos>=-0.52">
+        <span>Aller à l'Est</span>
+        <mat-icon>arrow_forward</mat-icon>
+    </span>
+    <span *ngIf="cos<1.04 && cos>=0.52">
+        <span>Aller au Nord-Est</span> 
+        <mat-icon style="transform: rotate(315deg)">arrow_forward</mat-icon>
+    </span>
+    <span *ngIf="cos<2.09 && cos>=1.04">
+        <span>Aller au Nord</span>
+                <mat-icon style="transform: rotate(270deg)">arrow_forward</mat-icon>
 
+    </span>
+    <span *ngIf="cos<2.61 && cos>=2.09">
+        <span>Aller au Nord-Ouest</span>
+        <mat-icon style="transform: rotate(225deg)">arrow_forward</mat-icon>
+    </span>
+    <span *ngIf="cos<-2.61 && cos>=2.61">
+        <span>Aller à l'Ouest</span>
+        <mat-icon style="transform: rotate(180deg)">arrow_forward</mat-icon>
+    </span>
+    <span *ngIf="cos<-2.09 && cos>=-2.61">
+        <span>Aller au Sud-Ouest</span>
+        <mat-icon style="transform: rotate(135deg)">arrow_forward</mat-icon>
+    </span>
+    <span *ngIf="cos<-1.04 && cos>=-2.09">
+        <span>Aller au Sud</span>
+        <mat-icon style="transform: rotate(90deg)">arrow_forward</mat-icon>
+    </span>
+    <span *ngIf="cos<-0.52 && cos>=-1.04">
+        <span>Aller au Sud-Est</span>
+        <mat-icon style="transform: rotate(45deg)">arrow_forward</mat-icon>
+    </span>
+</mat-toolbar>
+<body>
 <mat-accordion>
     <mat-expansion-panel *ngFor="let way of ways">
         <mat-expansion-panel-header>

@@ -14,8 +14,10 @@ import { environment } from 'src/environments/environment';
 export class WaysComponent implements OnInit {
 
   ways: Way[] = [{time: "50min", transports: ["metro", "velo", "marche", "autotaxi"], transportTime: ["10min", "5min", "15min", "20min"]},
-                {time: "10min", transports: ["metro", "autotaxi"], transportTime: ["15min", "20min"]}
+                {time: "30min", transports: ["metro", "autotaxi"], transportTime: ["15min", "20min"]}
 ];
+
+cos = -1
 
   constructor(private http: HttpClient) {
     //this.fetchWays("toto"); //URI TO GET WAYS)
