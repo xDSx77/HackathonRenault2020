@@ -1,5 +1,6 @@
 {
     "environment": "team09",
+    "url": "http://team09.xp65.renault-digital.com",
     "broker_domain": "mr1dns3dpz5mjj.messaging.solace.cloud",
     "broker_username": "team09",
     "broker_password": "hf9twck3zc",
