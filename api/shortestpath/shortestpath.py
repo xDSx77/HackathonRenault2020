@@ -113,3 +113,38 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
                 shorter_paths[key] = tmp_path
 
     return shorter_paths
+
+def subway_bike_path(src: dict, dst:dict, ecosystem: Ecosystem):
+     stations = ecosystem.get_metro_stations()
+     subway_bike = ecosystem.get_shortest_path_metro(src, dst)
+     starting_point = {}
+     ending_point = {}
+     counter = 0
+     starting_index = counter
+     print(subway_bike)
+"""
+     for value in subway_bike['cars'][0]['paths']:
+         for elm in stations:
+             if value[0] == elm['x'] and value[1] == elm['y']:
+                 ending_point == {elm['x'], elm['y']}
+                 if starting_point == {}:
+                     ending_point = {}
+                 else:
+                     sub_bike = ecosystem.get_shortest_path_bike(starting_point, ending_point)
+                     for i in len(starting_point, counter + 1):
+                         subway_bike['cars'][0]['path_length'] -= sub_like['cars'][0]['costs'].pop(i)
+                         del sub_like['cars'][0]['paths'][i]
+                     for i in len(sub_bike['cars'][0]['path_length']):
+                         subway_bike.insert(starting_point + i, sub_bike['cars'][0]['paths'][i])
+                         subway_bike.insert(starting_point + i, sub_bike['cars'][0]['costs'][i])
+                         subway_bike['cars'][0]['path_length'] += sub_like['cars'][0]['costs'].pop(i)
+                 starting_point = {}
+                 ending_point = {}
+             else:
+                 if starting_point == {}:
+                     starting_point = {elm['x'], elm['y']}
+                     starting_index = counter
+                 else:
+                     ending_point = {elm['x'], elm['y']}
+             counter += 1
+"""

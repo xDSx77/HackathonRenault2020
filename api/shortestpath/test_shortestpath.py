@@ -23,6 +23,12 @@ class MyTestCase(unittest.TestCase):
 
         print('subway:', path_subway)
 
+    def test_bike_metro(self):
+        ecosystem = Ecosystem("http://team09.xp65.renault-digital.com", "env")
+        first_path = shortestpath.get_shortest_paths({"x": 15.8, "y": 5.6}, {"x": 18.2, "y": 3.8}, "metro", "http://team09.xp65.renault-digital.com")
+        print(first_path)
+        second_path = shortestpath.subway_bike_path({"x": 15.8, "y": 5.6}, {"x": 18.2, "y": 3.8}, ecosystem)
+        print(second_path)
 
 
 
