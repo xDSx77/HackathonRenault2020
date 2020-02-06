@@ -2,11 +2,11 @@ import requests
 import json
 import logging
 
+
 class Ecosystem:
-    def __init__(self, url: str, env: str):
+    def __init__(self, url: str):
         # URL
         self.url = url
-        self.env = env
         # AGENT
         self.agent_situation = "/api/agent/api/user/situation/last"
         # CONTEXT
@@ -43,7 +43,6 @@ class Ecosystem:
         self.reset_bike_roads = "/api/graph/road_graph/reset_graph/bike"
         self.reset_car_roads = "/api/graph/road_graph/reset_graph/car"
         self.reset_metro_roads = "/api/graph/road_graph/reset_graph/subway"
-
 
     def get_agent_info(self) -> dict:
         route = self.url + self.agent_situation

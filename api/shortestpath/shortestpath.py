@@ -1,5 +1,6 @@
 import sys
 sys.path.insert(1, '../rest/')
+sys.path.insert(1, '../shortestpath')
 
 from ecosystem_api import Ecosystem
 from path import Path
@@ -74,14 +75,12 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
 
 
 def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
-    ecosystem = Ecosystem(url, "env")
+    ecosystem = Ecosystem(url)
+    dict_filters = {"walk": ecosystem.get_shortest_path_walk,
+                    "metro": get_subway_path,
+                    "bike": ecosystem.get_shortest_path_bike,
+                    "car": ecosystem.get_shortest_path_car}
 
-    dict_filters = {
-        "walk": ecosystem.get_shortest_path_walk,
-        "metro": get_subway_path,
-        "bike": ecosystem.get_shortest_path_bike,
-        "car": ecosystem.get_shortest_path_car
-    }
 
     shorter_paths = {}
     for key, function in dict_filters.items():
