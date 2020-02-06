@@ -24,7 +24,6 @@ class Path:
         self.nodes_path = []
         self.nodes_costs = []
 
-
         self.set_path_values_from_list_sub_path(list_sub_path)
         self.total_cost = total_cost
 

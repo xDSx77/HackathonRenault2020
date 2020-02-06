@@ -31,7 +31,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
         return []
 
     subway_path['cars'][0]['costs'] = [float(elt) for elt in subway_path['cars'][0]['costs']]
-    subway_path['cars'][0]['costs'] = list(set(subway_path['cars'][0]['costs']))
+    # subway_path['cars'][0]['costs'] = list(set(subway_path['cars'][0]['costs']))
 
     list_sub_path = []
     last_path = None
@@ -46,7 +46,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
 
         if float(walk_path['cars'][0]['path_length']) != 0:
             walk_path['cars'][0]['costs'] = [ float(elt) for elt in walk_path['cars'][0]['costs']]
-            walk_path['cars'][0]['costs'] = list(set(walk_path['cars'][0]['costs']))
+            # walk_path['cars'][0]['costs'] = list(set(walk_path['cars'][0]['costs']))
             list_sub_path.append(walk_path)
 
     # If last station not in dst -> add a path of walk to dst
@@ -60,7 +60,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
             last_path = None
 
         last_path['cars'][0]['costs'] = [float(elt) for elt in last_path['cars'][0]['costs']]
-        last_path['cars'][0]['costs'] = list(set(last_path['cars'][0]['costs']))
+        # last_path['cars'][0]['costs'] = list(set(last_path['cars'][0]['costs'][1:]))
 
     list_sub_path.append(subway_path)
     if last_path:
@@ -98,7 +98,9 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
                         total_cost = float(car_paths['cars'][0]['path_length'])
 
                         shorter_paths[key] = Path(src, dst, [car_paths], total_cost)
+
             elif key == "metro":
+
                 tmp_dict_path = function(ecosystem, src, dst)
                 if tmp_dict_path != []:
                     shorter_paths[key] = tmp_dict_path
@@ -111,5 +113,6 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
                 tmp_path = Path(src, dst, [tmp_dict_path], total_cost)
 
                 shorter_paths[key] = tmp_path
+
 
     return shorter_paths
