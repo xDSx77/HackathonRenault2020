@@ -22,6 +22,7 @@ def subway_lines(lines: list, states: list):
             line_payload += "{\"line\": \"" + str(lines[i]) + "\", " + "\"state\": \"" + str(states[i]) + "\"}"
     line_payload += "]"
     print(line_payload)
-    # client.subscribe(ENV + "/prod/environment/change/lines_state", qos=0)
-    client.publish(ENV + "/prod/city/morph/lines_state", line_payload, qos=0, retain=False)
-    # client.disconnect()
+    mqtt_base = MqttBase()
+    # mqtt_base.client.subscribe(mqtt_base.env + "/prod/environment/change/lines_state", qos=0)
+    mqtt_base.client.publish(mqtt_base.env + "/prod/city/morph/lines_state", line_payload, qos=0, retain=False)
+    # mqtt_base.client.disconnect()

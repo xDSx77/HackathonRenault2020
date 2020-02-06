@@ -1,4 +1,4 @@
-from mqtt_base import *
+from mqtt_base import MqttBase
 
 
 # Publish a new mission with the list of positions that the agent must use
@@ -24,6 +24,6 @@ def publish_mission(message: str, positions: list):
                                "}"
     mission_payload += "    ]" + \
                        "}"
-
-    client.publish(ENV + "/prod/user/mission", mission_payload, qos=0, retain=False)
-    # client.disconnect()
+    mqtt_base = MqttBase()
+    mqtt_base.client.publish(mqtt_base.env + "/prod/user/mission", mission_payload, qos=0, retain=False)
+    # mqtt_base.client.disconnect()

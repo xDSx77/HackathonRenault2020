@@ -1,0 +1,20 @@
+@font-face  {
+	src: url('../../assets/CourierPrime-Regular.ttf');
+	font-family: myfont;
+}
+
+body {
+	background-image: url('../../assets/home.jpg');
+}
+
+h1 {
+	color: black;
+	min-height: 50vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: myfont;
+
+	margin: 0;
+	padding: 0;
+}

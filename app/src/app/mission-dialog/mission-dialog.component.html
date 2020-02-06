@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Bonjour, agent.</h1>
+<div mat-dialog-content>
+  <p>{{data.mission}}</p>
+  <mat-list>
+    <h3 mat-subheader>Points</h3>
+    <mat-list-item *ngFor="let point of data.positions">
+      <h4 mat-line>x: {{point.x}}, y: {{point.y}}</h4>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()" cdkFocusInitial>C'est parti.</button>
+</div>
