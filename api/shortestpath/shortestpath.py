@@ -31,7 +31,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
         return []
 
     subway_path['cars'][0]['costs'] = [float(elt) for elt in subway_path['cars'][0]['costs']]
-    subway_path['cars'][0]['costs'] = list(set(subway_path['cars'][0]['costs']))
+    # subway_path['cars'][0]['costs'] = list(set(subway_path['cars'][0]['costs']))
 
     list_sub_path = []
     last_path = None
@@ -46,7 +46,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
 
         if float(walk_path['cars'][0]['path_length']) != 0:
             walk_path['cars'][0]['costs'] = [ float(elt) for elt in walk_path['cars'][0]['costs']]
-            walk_path['cars'][0]['costs'] = list(set(walk_path['cars'][0]['costs']))
+            # walk_path['cars'][0]['costs'] = list(set(walk_path['cars'][0]['costs']))
             list_sub_path.append(walk_path)
 
     # If last station not in dst -> add a path of walk to dst
@@ -60,7 +60,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
             last_path = None
 
         last_path['cars'][0]['costs'] = [float(elt) for elt in last_path['cars'][0]['costs']]
-        last_path['cars'][0]['costs'] = list(set(last_path['cars'][0]['costs']))
+        # last_path['cars'][0]['costs'] = list(set(last_path['cars'][0]['costs'][1:]))
 
     list_sub_path.append(subway_path)
     if last_path:
@@ -98,7 +98,9 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
                         total_cost = float(car_paths['cars'][0]['path_length'])
 
                         shorter_paths[key] = Path(src, dst, [car_paths], total_cost)
+
             elif key == "metro":
+
                 tmp_dict_path = function(ecosystem, src, dst)
                 if tmp_dict_path != []:
                     shorter_paths[key] = tmp_dict_path
@@ -112,4 +114,40 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
 
                 shorter_paths[key] = tmp_path
 
+
     return shorter_paths
+
+def subway_bike_path(src: dict, dst:dict, ecosystem: Ecosystem):
+     stations = ecosystem.get_metro_stations()
+     subway_bike = ecosystem.get_shortest_path_metro(src, dst)
+     starting_point = {}
+     ending_point = {}
+     counter = 0
+     starting_index = counter
+     print(subway_bike)
+"""
+     for value in subway_bike['cars'][0]['paths']:
+         for elm in stations:
+             if value[0] == elm['x'] and value[1] == elm['y']:
+                 ending_point == {elm['x'], elm['y']}
+                 if starting_point == {}:
+                     ending_point = {}
+                 else:
+                     sub_bike = ecosystem.get_shortest_path_bike(starting_point, ending_point)
+                     for i in len(starting_point, counter + 1):
+                         subway_bike['cars'][0]['path_length'] -= sub_like['cars'][0]['costs'].pop(i)
+                         del sub_like['cars'][0]['paths'][i]
+                     for i in len(sub_bike['cars'][0]['path_length']):
+                         subway_bike.insert(starting_point + i, sub_bike['cars'][0]['paths'][i])
+                         subway_bike.insert(starting_point + i, sub_bike['cars'][0]['costs'][i])
+                         subway_bike['cars'][0]['path_length'] += sub_like['cars'][0]['costs'].pop(i)
+                 starting_point = {}
+                 ending_point = {}
+             else:
+                 if starting_point == {}:
+                     starting_point = {elm['x'], elm['y']}
+                     starting_index = counter
+                 else:
+                     ending_point = {elm['x'], elm['y']}
+             counter += 1
+"""
