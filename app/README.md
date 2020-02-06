@@ -1,4 +1,4 @@
-# HackathonRenault2020Front
+# Hackathon Renault 2020 Front
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
