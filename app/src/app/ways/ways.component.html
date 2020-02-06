@@ -1,7 +1,6 @@
 <app-home-banner></app-home-banner>
 <app-map></app-map>
 
-<body>
 <mat-accordion>
     <mat-expansion-panel *ngFor="let way of ways">
         <mat-expansion-panel-header>
@@ -28,4 +27,3 @@
         <app-way [currentWay]=way></app-way>
     </mat-expansion-panel>
 </mat-accordion>
-<body>
