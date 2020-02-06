@@ -23,12 +23,12 @@ def set_best_car(car_paths: dict):
             best_car = [car]
     car_paths["cars"] = best_car
 
-def get_subway_path(eco, src: dict, dst: dict) -> list:
+def get_subway_path(eco, src: dict, dst: dict):
 
     # Get path between src to dst
     subway_path = eco.get_shortest_path_metro(src, dst)
     if subway_path == {}:
-        return []
+        return None
 
     subway_path['cars'][0]['costs'] = [float(elt) for elt in subway_path['cars'][0]['costs']]
     # subway_path['cars'][0]['costs'] = list(set(subway_path['cars'][0]['costs']))
@@ -42,7 +42,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
 
         walk_path = eco.get_shortest_path_walk(src, {'x': first_station[0], 'y': first_station[1]})
         if walk_path == {}:
-            return []
+            return None
 
         if float(walk_path['cars'][0]['path_length']) != 0:
             walk_path['cars'][0]['costs'] = [ float(elt) for elt in walk_path['cars'][0]['costs']]
@@ -55,7 +55,7 @@ def get_subway_path(eco, src: dict, dst: dict) -> list:
     if dst['x'] != last_station[0] or dst['y'] != last_station[1]:
         last_path = eco.get_shortest_path_walk({'x': last_station[0], 'y': last_station[1]}, dst)
         if last_path == []:
-            return []
+            return None
         if float(last_path['cars'][0]['path_length']) == 0:
             last_path = None
 
@@ -97,22 +97,20 @@ def get_shortest_paths(src: dict, dst: dict, filters: list, url: str):
                         set_best_car(car_paths)
                         total_cost = float(car_paths['cars'][0]['path_length'])
 
-                        shorter_paths[key] = Path(src, dst, [car_paths], total_cost)
+                        shorter_paths[key] = Path(src, dst, [car_paths], total_cost).to_dict()
 
             elif key == "metro":
-
                 tmp_dict_path = function(ecosystem, src, dst)
-                if tmp_dict_path != []:
-                    shorter_paths[key] = tmp_dict_path
+                if tmp_dict_path:
+                    shorter_paths[key] = tmp_dict_path.to_dict()
             else:
-
                 tmp_dict_path = function(src, dst)
                 if tmp_dict_path == {}:
                     continue
                 total_cost = float(tmp_dict_path['cars'][0]['path_length'])
                 tmp_path = Path(src, dst, [tmp_dict_path], total_cost)
 
-                shorter_paths[key] = tmp_path
+                shorter_paths[key] = tmp_path.to_dict()
 
 
     return shorter_paths

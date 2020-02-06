@@ -144,7 +144,6 @@ class Ecosystem:
         }
 
         response = requests.post(url=route, json=payload)
-        print(response.url)
         if response.status_code != 200:
             logging.debug("ECOSYSTEM: REQUEST FAILED")
             return {}
@@ -161,7 +160,6 @@ class Ecosystem:
 
         response = requests.post(url=route, json=payload)
         if response.status_code != 200:
-            print(response.status_code, response.text)
             logging.debug("ECOSYSTEM: REQUEST FAILED")
             return {}
 

@@ -53,4 +53,11 @@ class Path:
                                           self.list_sub_path,
                                           self.total_cost)
 
+    def to_dict(self):
+        return {"src": self.src,
+                "dst": self.dst,
+                "nodes_path": self.nodes_path,
+                "nodes_costs": self.nodes_costs,
+                "mediums": self.transportation,
+                "total_cost": self.total_cost}
 
