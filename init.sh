@@ -16,8 +16,6 @@ fi
 
 export FLASK_APP="api/flask_api.py"
 
-flask run
-
 if [ -x "$(command -v python3)" ]; then
     python3 -m flask run
 elif [ -x "$(command -v python)" ]; then
