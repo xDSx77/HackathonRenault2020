@@ -1,12 +1,16 @@
+from flask import Flask
+import os
 import paho.mqtt.client as mqtt
 import logging
 import json
+app = Flask(__name__)
 
 
 class MqttBase:
     json_data = None
     env = None
     client = None
+    data = None
 
     # The callback for when the client receives a CONNACK response from the server.
     @staticmethod
@@ -14,14 +18,13 @@ class MqttBase:
         print("Connected with result code " + str(rc))
 
     # The callback for when a PUBLISH message is received from the server.
-    @staticmethod
-    def on_message(client, userdata, msg):
-        print(msg.topic + " " + str(msg.payload))
+    def on_message(self, client, userdata, msg):
+        self.data = msg.payload.decode()
+        client.loop_stop()
 
     # The callback for when a client subscribe to a MQTT channel
-    @staticmethod
     def on_subscribe(client, userdata, mid, granted_qos):
-        print(userdata)
+        print("type of userdata: " + type(userdata))
 
     def __init__(self):
         # Enable debug logging for mqtt
@@ -35,7 +38,7 @@ class MqttBase:
         self.client.on_message = self.on_message
         self.client.on_subscribe = self.on_subscribe
 
-        with open("../config.dev.json") as json_f:
+        with open(os.path.dirname(app.instance_path) + "/config.dev.json") as json_f:
             self.json_data = json.load(json_f)
             self.env = self.json_data['environment']
 

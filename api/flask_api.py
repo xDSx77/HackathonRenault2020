@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/api/subscribe_mission")
 # Subscribe to the mission channel
 def subscribe_mission_f():
-    subscribe_mission()
+    return subscribe_mission.subscribe_mission()
 
 
 @app.route("/api/get_agent_info")
