@@ -19,7 +19,7 @@ class MqttBase:
 
     # The callback for when a PUBLISH message is received from the server.
     def on_message(self, client, userdata, msg):
-        self.data = json.load(msg.payload.decode())
+        self.data = msg.payload.decode()
         client.loop_stop()
 
     # The callback for when a client subscribe to a MQTT channel

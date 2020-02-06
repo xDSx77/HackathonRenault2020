@@ -9,7 +9,7 @@ def subscribe_mission():
     mqtt.client.subscribe(mqtt.env + "/prod/user/mission", qos=0)
     while mqtt.data is None:
         mqtt.client.loop()
-    print(mqtt.data)
+    # print(mqtt.data)
     return mqtt.data
 
 
