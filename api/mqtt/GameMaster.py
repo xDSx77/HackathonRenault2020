@@ -36,6 +36,14 @@ def interact_all_subway(status : str):
         list_status.append(status)
     subway_lines(list_line, list_status)
 
+def interact_all_road_car(status : str):
+    list_road = []
+    for i in range(200):
+        a = Road("edge_" + str(i), status)
+        list_road.append(a)
+    change_road(list_road, [],[])
+
+
 
 def reset():
     reset_agent()

@@ -12,6 +12,8 @@ def help():
           polution = Change la polution en pic éleve \n\
           aer = Téléporte à l'aéroport \n\
           sworm = Provoque une tempête \n\
+          open_all_car = ouvre toutes les route au car\n\
+          close_all_car = ferme toutes les route au car\n\
           open_all = ouvre les route fermee\n\
           open_all_sub = ouvre les metros\n\
           close_all_sub = ferme les metros\n\
@@ -40,12 +42,17 @@ def parse_command(command : str):
         little_snow_storm()
     elif (command == "open_all"):
         open_all()
-
     elif command == 'open_all_sub':
         interact_all_subway("open")
 
     elif command == 'close_all_sub':
         interact_all_subway("close")
+
+    elif command == 'open_all_car':
+        interact_all_road_car("open")
+
+    elif command == 'close_all_car':
+        interact_all_road_car("close")
 
     elif (command == "reset"):
         reset()
