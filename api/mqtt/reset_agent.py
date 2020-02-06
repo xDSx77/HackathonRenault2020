@@ -1,7 +1,8 @@
-from mqtt_base import *
+from mqtt_base import MqttBase
 
 
 # Reset the agent MeaooTime
 def reset_agent():
-    client.publish(ENV + "/prod/city/reset", None, qos=0, retain=False)
-    # client.disconnect()
+    mqtt_base = MqttBase()
+    mqtt_base.client.publish(mqtt_base.env + "/prod/city/reset", None, qos=0, retain=False)
+    # mqtt_base.client.disconnect()

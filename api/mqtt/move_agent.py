@@ -1,4 +1,4 @@
-from mqtt_base import *
+from mqtt_base import MqttBase
 
 
 # Move the agent with the according vehicle type to a coordinate of the MeaooCity
@@ -14,10 +14,11 @@ def move_agent(vehicle_type: str, target: tuple):
         return
 
     move_payload = "{" + \
-                    "\"vehicle_type\": \"" + str(vehicle_type) + "\"," \
-                    "\"target\": {\"x\": " + str(target[0]) + ", \"y\": " + str(target[1]) + "}" \
+                    "   \"vehicle_type\": \"" + str(vehicle_type) + "\"," \
+                    "   \"target\": {\"x\": " + str(target[0]) + ", \"y\": " + str(target[1]) + "}" \
                     "}"
-    print(move_payload)
-    # client.subscribe(ENV + "/prod/user/status", qos=0)
-    client.publish(ENV + "/prod/user/path", move_payload, qos=0, retain=False)
-    # client.disconnect()
+    # print(move_payload)
+    mqtt_base = MqttBase()
+    # mqtt_base.client.subscribe(mqtt_base.env + "/prod/user/status", qos=0)
+    mqtt_base.client.publish(mqtt_base.env + "/prod/user/path", move_payload, qos=0, retain=False)
+    # mqtt_base.client.disconnect()

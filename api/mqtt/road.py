@@ -1,4 +1,5 @@
-from mqtt_base import *
+from mqtt_base import MqttBase
+
 
 class Road:
     # road is the name of the road
@@ -48,6 +49,7 @@ def change_road(car: list, bike: list, walk: list):
 
     payload = "[" + payload_car + payload_bike + payload_walk + "]"
     print(payload)
-    client.publish(ENV + "/prod/city/morph/roads_status", payload, qos=0, retain=False)
+    mqtt_base = MqttBase()
+    mqtt_base.client.publish(mqtt_base.env + "/prod/city/morph/roads_status", payload, qos=0, retain=False)
 
 

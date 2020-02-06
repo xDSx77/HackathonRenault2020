@@ -21,6 +21,7 @@ def teleport_agent(vehicle_type: str, arrival_point: tuple):
                        "\"costs\": [0.0, 0.0]" \
                        "}"
     print(teleport_payload)
-    # client.subscribe(ENV + "/prod/user/status", qos=0)
-    client.publish(ENV + "/prod/user/path-to-target", teleport_payload, qos=0, retain=False)
-    # client.disconnect()
+    mqtt_base = MqttBase()
+    # mqtt_base.client.subscribe(mqtt_base.env + "/prod/user/status", qos=0)
+    mqtt_base.client.publish(mqtt_base.env + "/prod/user/path-to-target", teleport_payload, qos=0, retain=False)
+    # mqtt_base.client.disconnect()
