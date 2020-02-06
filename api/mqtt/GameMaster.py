@@ -22,8 +22,18 @@ def close_some_road(close : str):
 
 
 def close_some_subway(close : str):
-    list_line = ["edge_6","edge_12"]
-    list_status = [close, close]
+    list_line = ["edge_6","edge_7","edge_12"]
+    list_status = [close, close, close]
+    subway_lines(list_line, list_status)
+
+
+def interact_all_subway(status : str):
+    list_line = []
+    list_status = []
+    for i in range(30):
+        line = "edge_" + str(i)
+        list_line.append(line)
+        list_status.append(status)
     subway_lines(list_line, list_status)
 
 
@@ -93,9 +103,10 @@ def hard_test4():
     rain()
 
 
-def open_all()
+def open_all():
     close_some_road("open")
     close_some_subway("open")
+
 
 
 
