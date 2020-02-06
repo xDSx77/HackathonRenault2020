@@ -93,6 +93,9 @@ def hard_test4():
     rain()
 
 
+def open_all()
+    close_some_road("open")
+    close_some_subway("open")
 
 
 
