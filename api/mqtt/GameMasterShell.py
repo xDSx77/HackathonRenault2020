@@ -32,9 +32,9 @@ def parse_command(command : str):
     elif (command == "polution"):
         polution_eleve()
     elif (command == "aer"):
-        start_aeroport()
+        start_airport()
     elif (command == "sworm"):
-        little_smow_storm()
+        little_snow_storm()
     elif (command == "reset"):
         reset()
     else:
